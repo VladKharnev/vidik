@@ -173,3 +173,43 @@ body {
 .movie__mark_orange {
   border: 2px solid orange;
 }
+footer{
+  height: 100px;
+}
+.line{
+  border-bottom: 1px solid #cee54d;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.footer__info_wrapper{
+  display: flex;
+  justify-content: center;
+  margin-top: 7px;
+  color: #000000;
+}
+.footer__info{
+  display: flex;
+  justify-content: right;
+  flex-direction: column;
+  width: 150px;
+  img{
+    width: 20px;
+  }
+  h3{
+    font-size: 15px;
+  }
+  p{
+    font-size: 13px;
+  }
+  .footer__info_person{
+    display: flex;
+    margin-top: 7px;
+    justify-content: space-between;
+  }
+}
+.footer__defens{
+  text-align: right;
+  margin-right: 20px;
+  padding-bottom: 10px;
+  font-size: 12px;
+}

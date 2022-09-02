@@ -42,7 +42,7 @@ function menu () {
             <img src="${item.posterUrl}">
             <div class="movie__info">
                 <div class="movie__title">${item.nameRu}</div>
-                <div class="movie__category">${item.genres.map(genre => `${genre.genre}`)}</div>
+                <div class="movie__category">${item.genres.map(genre => ` ${genre.genre}`)}</div>
                 <div class="movie__mark movie__mark_green">${item.rating}</div>
             </div>
         </div>   
