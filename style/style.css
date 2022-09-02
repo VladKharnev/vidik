@@ -1,3 +1,129 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  transition: all ease 1s;
+}
+
+.c-hamburger {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  width: 96px;
+  height: 96px;
+  font-size: 0;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.c-hamburger:focus {
+  outline: none;
+}
+
+.c-hamburger span {
+  display: block;
+  position: absolute;
+  top: 44px;
+  left: 18px;
+  right: 18px;
+  height: 8px;
+  background: #fff;
+}
+
+.c-hamburger span::before,
+.c-hamburger span::after {
+  display: block;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  height: 8px;
+  background: #fff;
+  content: "";
+}
+
+.c-hamburger span::before {
+  top: -20px;
+}
+
+.c-hamburger span::after {
+  bottom: -20px;
+}
+
+.c-hamburger {
+  background-color: #cb0032;
+  border: none;
+}
+
+.c-hamburger-line span {
+  transition: backgraund 0s 0.3s;
+}
+
+.c-hamburger-line span::before,
+.c-hamburger-line span::after {
+  transition-duration: 0.3s, 0.3s;
+  transition-delay: 0.3s, 0.3s;
+}
+
+.c-hamburger-line span::before {
+  transition-property: top, transform;
+}
+
+.c-hamburger-line span::after {
+  transition-property: bottom, transform;
+}
+
+.c-hamburger-line.is-active {
+  background: yellowgreen;
+}
+
+.c-hamburger-line.is-active span {
+  background: none;
+}
+
+.c-hamburger-line.is-active span::before {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+.c-hamburger-line.is-active span::after {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.c-hamburger-line.is-active span::before, .c-hamburger-line.is-active span::after {
+  transition-delay: 0s, 0.3s;
+}
+
+#menu {
+  width: 300px;
+  margin-left: -204px;
+  background: black;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  transition: all ease 1s;
+  z-index: 999;
+}
+
 .container {
   width: 80%;
+  min-width: 1000px;
+  margin: 30px auto;
+  text-align: center;
+}
+
+.body-active {
+  margin-left: 300px;
+}
+
+#menu.nav-active {
+  margin-left: 0;
 }/*# sourceMappingURL=style.css.map */
