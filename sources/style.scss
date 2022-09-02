@@ -121,6 +121,27 @@ body {
   text-align: center;
   height: 70px;
 }
+.block {
+  display: flex;
+  justify-content: space-between;
+}
+h1 {
+  margin-left :65px;
+  font-size: 40px;
+  margin-top: 20px;
+}
+input {
+  width: 300px;
+  height: 40px;
+  margin-right: 20px;
+  margin-top: 20px;
+  border-radius: 5px;
+  font-size: 20px;
+  outline: none;
+}
+
+
+
 
 .container {
   max-width: 1600px;
@@ -165,13 +186,13 @@ body {
   font-size: 14px;
 }
 .movie__mark_green {
-  border: 2px solid green;
+  border: 4px solid green;
 }
 .movie__mark_red {
-  border: 2px solid red;
+  border: 4px solid red;
 }
 .movie__mark_orange {
-  border: 2px solid orange;
+  border: 4px solid orange;
 }
 footer{
   height: 100px;
