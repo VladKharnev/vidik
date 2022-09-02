@@ -16,8 +16,8 @@ body {
   overflow: hidden;
   margin: 0;
   padding: 0;
-  width: 96px;
-  height: 96px;
+  width: 55px;
+  height: 55px;
   font-size: 0;
   box-shadow: none;
   cursor: pointer;
@@ -30,10 +30,10 @@ body {
 .c-hamburger span {
   display: block;
   position: absolute;
-  top: 44px;
-  left: 18px;
-  right: 18px;
-  height: 8px;
+  top: 25px;
+  left: 9px;
+  right: 9px;
+  height: 4px;
   background: #fff;
 }
 
@@ -43,7 +43,7 @@ body {
   position: absolute;
   width: 100%;
   left: 0;
-  height: 8px;
+  height: 4px;
   background: #fff;
   content: "";
 }
@@ -103,8 +103,8 @@ body {
 
 #menu {
   width: 300px;
-  margin-left: -204px;
-  background: black;
+  margin-left: -244px;
+  background: white;
   position: fixed;
   left: 0;
   top: 0;
@@ -126,4 +126,18 @@ body {
 
 #menu.nav-active {
   margin-left: 0;
+}
+
+.first {
+  margin-top: 95px;
+}
+
+.buttons {
+  background-color: #fff;
+  font-size: 25px;
+  border: none;
+  display: block;
+  width: 100%;
+  text-align: center;
+  height: 70px;
 }/*# sourceMappingURL=style.css.map */
