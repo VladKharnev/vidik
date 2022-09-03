@@ -37,6 +37,8 @@ async function getMovies(url) {
   });
   const data = await resp.json();
   showMovies(data);
+  getPage(data)
+  changePage (data)
 }
 function getClassByRate(vote) {
   if (vote >= 7) {
@@ -148,3 +150,27 @@ window.addEventListener("keydown", (e) => {
     closeModal();
   }
 });
+
+function getPage (data){
+  const mainPages = document.querySelector('.main__page')
+  mainPages.innerHTML =''
+  const numbPage = data.pagesCount
+  for (let item = 1; item <= numbPage; item++){
+      const pageEl = document.createElement('div')
+      pageEl.classList.add('main__page_numb')
+      pageEl.textContent = item
+      mainPages.appendChild(pageEl)
+  }
+}
+function changePage (data){
+  const mainPages = document.querySelector('.main__page')
+  mainPages.onclick = function(event){
+      const target = event.target
+      if (target.tagName == 'DIV'){
+          const numbPage = target.textContent
+          console.log(numbPage)
+          const API_URL_POPULAR_PAGE = `https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_100_POPULAR_FILMS&page=${numbPage}`
+          getMovies(API_URL_POPULAR_PAGE)
+      }
+  }
+}

@@ -348,4 +348,23 @@ footer {
   margin-right: 20px;
   padding-bottom: 10px;
   font-size: 12px;
+}
+
+.main__page {
+  display: flex;
+  justify-content: center;
+  color: #cee54d;
+  margin-bottom: 20px;
+}
+.main__page .main__page_numb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #cee54d;
+  width: 20px;
+  height: 20px;
+  font-size: 15px;
+  margin-right: 10px;
+  padding-top: 2px;
+  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */
