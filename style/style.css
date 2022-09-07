@@ -4,6 +4,12 @@
   box-sizing: border-box;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Josefin Sans", sans-serif;
   background-color: #041e39;
@@ -367,4 +373,79 @@ footer {
   margin-right: 10px;
   padding-top: 2px;
   cursor: pointer;
+}
+
+.main_page_click {
+  background-color: #cee54d;
+  color: #041e39;
+}
+
+.modal__button-info {
+  padding: 5px;
+  margin: 10px;
+  align-self: center;
+  width: 250px;
+  border-radius: 10px;
+  background-color: #cb0032;
+  color: #fff;
+  height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.modal__button-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.about__film {
+  width: 1450px;
+  margin: 0 auto;
+}
+
+.about__film-poster-img {
+  max-width: 400px;
+  border-radius: 5px;
+  margin-right: 50px;
+}
+
+.about__film {
+  display: flex;
+}
+
+.about__film-info {
+  color: #cee54d;
+}
+.about__film-info h2 {
+  font-size: 45px;
+  margin-bottom: 30px;
+}
+.about__film-info p {
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: 200;
+}
+
+.colortext {
+  color: #ec1996;
+  font-size: 17px;
+}
+
+.posters_name {
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-size: 25px;
+  color: #ec1996;
+}
+
+.poster-img {
+  width: 400px;
+  height: 225px;
+  margin-right: 20px;
+}
+
+.posters__imgs {
+  display: flex;
+  justify-content: center;
 }/*# sourceMappingURL=style.css.map */

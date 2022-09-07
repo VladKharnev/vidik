@@ -1,4 +1,7 @@
-const API_KEY = "e0fbb552-e178-4471-9e2e-12ab59b46708";
+///////////////////////////////////
+const API_KEY = "1c0164fd-1f21-4acd-b2d1-964d6c593839";
+//////////////API///////////////////////////
+
 const API_URL_POPULAR =
   "https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_100_POPULAR_FILMS&page=1";
 const API_URL_SEARCH =
@@ -6,6 +9,8 @@ const API_URL_SEARCH =
 
 const API_URL_MOVIE_DETAILS =
   "https://kinopoiskapiunofficial.tech/api/v2.2/films/";
+
+  ///////////////////////////////////////////
 
 function menu() {
   document
@@ -36,9 +41,13 @@ async function getMovies(url) {
     },
   });
   const data = await resp.json();
+
+
   showMovies(data);
   getPage(data)
   changePage (data)
+
+  return data
 }
 function getClassByRate(vote) {
   if (vote >= 7) {
@@ -54,6 +63,7 @@ function showMovies(data) {
   const moviesEl = document.querySelector(".movies");
 
   document.querySelector(".movies").innerHTML = "";
+  document.querySelector('.about__film_wrapper').innerHTML ="";
 
   data.films.forEach((item) => {
     const movieEl = document.createElement("div");
@@ -99,7 +109,7 @@ function retMain() {
 }
 retMain();
 
-// Modal
+///////////////////////////////////// Modal
 
 const modalEl = document.querySelector(".modal");
 async function openModal(id) {
@@ -112,6 +122,7 @@ async function openModal(id) {
       const data = await resp.json();
   modalEl.classList.add("modal--show");
   document.body.classList.add('stop-scrolling');
+
 
   modalEl.innerHTML = `
     <div class="modal__card">
@@ -127,14 +138,20 @@ async function openModal(id) {
               <li >Сайт : <a class="modal__movie-stile" href="${data.webUrl}">${data.webUrl}</a></li>
               <li class="modal__movie-overvie">Описание : ${data.description}</li>
             </ul>
-            <button type="button" class="modal__button-close">Закрыть</button>
+            <div class="modal__button-wrapper">
+              <button type="button" class="modal__button-info">Подробнее о фильме</button>
+              <button type="button" class="modal__button-close">Закрыть</button>
+            </div>
           </div>
         </div>
     `
     const btnClose = document.querySelector(".modal__button-close");
-btnClose.addEventListener("click", () => closeModal());
-}
+    const btnAbout = document.querySelector('.modal__button-info')
 
+    btnClose.addEventListener("click", () => closeModal());
+    btnAbout.addEventListener('click',()=>{aboutFilm(id),closeModal()})
+}
+/////////////////////////////////////////////////////////////
 
 function closeModal() {
   modalEl.classList.remove("modal--show");
@@ -151,26 +168,135 @@ window.addEventListener("keydown", (e) => {
   }
 });
 
+//отрисовка количества страниц///////////////////////
+
 function getPage (data){
   const mainPages = document.querySelector('.main__page')
   mainPages.innerHTML =''
   const numbPage = data.pagesCount
+  let pageId = 1;
   for (let item = 1; item <= numbPage; item++){
-      const pageEl = document.createElement('div')
-      pageEl.classList.add('main__page_numb')
-      pageEl.textContent = item
-      mainPages.appendChild(pageEl)
+      const pageEl = document.createElement('span');
+      pageEl.textContent = item;
+      pageEl.classList.add('main__page_numb');
+      pageEl.id = pageId
+      mainPages.appendChild(pageEl);
+      pageId++;
   }
 }
-function changePage (data){
+
+/////////////////////////////////////
+
+//выбор страницы//////////////////////
+function changePage (){
   const mainPages = document.querySelector('.main__page')
   mainPages.onclick = function(event){
       const target = event.target
-      if (target.tagName == 'DIV'){
-          const numbPage = target.textContent
-          console.log(numbPage)
+      if (target.tagName == 'SPAN'){
+          target.classList.add('main_page_click')
+          const numbPage = target.id
           const API_URL_POPULAR_PAGE = `https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_100_POPULAR_FILMS&page=${numbPage}`
           getMovies(API_URL_POPULAR_PAGE)
       }
   }
 }
+//////////////////////////////////////////
+
+
+
+
+async function aboutFilm(id){
+  const resp = await fetch(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}`, {
+    headers: {
+      "Content-Type": "application/json",
+      "X-API-KEY": API_KEY,
+    },
+  });
+  const data = await resp.json();
+
+  const actors = await fetch(`https://kinopoiskapiunofficial.tech/api/v1/staff?filmId=${id}`, {
+    headers: {
+      "Content-Type": "application/json",
+      "X-API-KEY": API_KEY,
+    },
+  });
+  const actorsData = await actors.json();
+
+  const posters = await fetch(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/images?type=STILL&page=1`, {
+    headers: {
+      "Content-Type": "application/json",
+      "X-API-KEY": API_KEY,
+    },
+  });
+  const postersData = await posters.json();
+
+  const trailer = await fetch(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/videos`, {
+    headers: {
+      "Content-Type": "application/json",
+      "X-API-KEY": API_KEY,
+    },
+  });
+  const trailerData = await trailer.json();
+
+  console.log(trailerData)
+
+
+  document.querySelector(".movies").innerHTML = ""
+  document.querySelector('.main__page').innerHTML = ""
+
+  let arrActors =[]
+  let arrPosters =[]
+  
+  function actorsShow (actorsData){
+    for (let i = 0; i < 7; i++){
+      arrActors.push(actorsData[i].nameRu)
+  }
+  }
+
+  function postersShow (postersData){
+    for (let i = 0; i < 3; i++){
+      arrPosters.push(postersData.items[i].imageUrl)
+  }
+  }
+  postersShow(postersData)
+  actorsShow(actorsData)
+  const infoFilm = document.querySelector('.about__film_wrapper')
+
+
+  infoFilm.innerHTML = `
+          <div class="about__film">
+          <div class="about__film-poster">
+          <img class='about__film-poster-img' src="${data.posterUrl}" alt="poster">
+        </div>
+        <div class="about__film-info">
+          <h2 class="info__name">${data.nameRu}</h2>
+          <p class="info__slogan"><span class="colortext">Описание: </span>${data.description}</p>
+          <p class="info__country"><span class="colortext">Cтрана: </span>${data.countries.map(
+            (country) => ` ${country.country}`
+          )}</p>
+          <p class="info__genres"><span class="colortext">Жанр: </span>${data.genres.map(
+            (genre) => ` ${genre.genre}`)}</p>
+          <p class="info__year"><span class="colortext">Год: </span>${data.year}</p>
+          <p class="info__raiting-imdb"><span class="colortext">Рейтинг Imbd: </span>${data.ratingImdb}</p>
+          <p class="info__raiting-kinopoisk"><span class="colortext">Рейтинг Кинопоиск: </span>${data.ratingKinopoisk}</p>
+          <p class="info__actors"><span class="colortext">Актёры: </span>${arrActors.map((actor) => ` ${actor}`)}</p>
+        </div>
+        </div>
+        <div class = "posters">
+        <h4 class='posters_name'>Постеры:</h4>
+        </div>
+        <div class = "posters__imgs">
+            <div><img class='poster-img' src="${arrPosters[0]}" alt="poster"></div>
+            <div><img class='poster-img' src="${arrPosters[1]}" alt="poster"></div>
+            <div><img class='poster-img' src="${arrPosters[2]}" alt="poster"></div>
+        </div>
+        <div class = "posters">
+        <h4 class='posters_name'>Трейлер:</h4>
+        </div>
+        <div class = "trailer__video">
+            
+        </div>
+        `
+}
+
+
