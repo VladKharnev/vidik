@@ -1,7 +1,11 @@
+<<<<<<< HEAD
 ///////////////////////////////////
 const API_KEY = "1c0164fd-1f21-4acd-b2d1-964d6c593839";
 //////////////API///////////////////////////
 
+=======
+const API_KEY = "1c0164fd-1f21-4acd-b2d1-964d6c593839";
+>>>>>>> master
 const API_URL_POPULAR =
   "https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_100_POPULAR_FILMS&page=1";
 const API_URL_SEARCH =
@@ -10,7 +14,15 @@ const API_URL_SEARCH =
 const API_URL_MOVIE_DETAILS =
   "https://kinopoiskapiunofficial.tech/api/v2.2/films/";
 
+<<<<<<< HEAD
   ///////////////////////////////////////////
+=======
+  const API_URL_AWAIT_MOVIES = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_AWAIT_FILMS&page=1';
+
+  const API_TOP_250 = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_250_BEST_FILMS&page=1'
+
+  
+>>>>>>> master
 
 function menu() {
   document
@@ -50,9 +62,9 @@ async function getMovies(url) {
   return data
 }
 function getClassByRate(vote) {
-  if (vote >= 7) {
+  if (vote >= 7 || vote >= '70%') {
     return "green";
-  } else if (vote > 5) {
+  } else if (vote > 5 || vote > '50%') {
     return "orange";
   } else {
     return "red";
@@ -86,7 +98,7 @@ function showMovies(data) {
     moviesEl.appendChild(movieEl);
   });
 }
-
+//  Поиск 
 const form = document.querySelector("form");
 const search = document.querySelector("input");
 
@@ -200,6 +212,7 @@ function changePage (){
       }
   }
 }
+<<<<<<< HEAD
 //////////////////////////////////////////
 
 
@@ -300,3 +313,17 @@ async function aboutFilm(id){
 }
 
 
+=======
+
+const awesome = document.querySelector('.second');
+awesome.addEventListener('click',()=> {
+    return getMovies(API_URL_AWAIT_MOVIES);
+    
+})
+
+const top250 = document.querySelector('.first');
+top250.addEventListener('click',()=> {
+    return getMovies(API_TOP_250);
+    
+})
+>>>>>>> master

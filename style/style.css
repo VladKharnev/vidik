@@ -187,13 +187,13 @@ input {
 }
 
 .movie {
-  width: 240px;
+  width: 260px;
   margin: 10px;
   position: relative;
   color: #cee54d;
 }
 .movie img {
-  max-width: 100%;
+  width: 100%;
 }
 
 .movie img:hover {
