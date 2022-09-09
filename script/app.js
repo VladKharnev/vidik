@@ -1,11 +1,7 @@
-<<<<<<< HEAD
 ///////////////////////////////////
-const API_KEY = "1c0164fd-1f21-4acd-b2d1-964d6c593839";
+const API_KEY = "e0fbb552-e178-4471-9e2e-12ab59b46708";
 //////////////API///////////////////////////
 
-=======
-const API_KEY = "1c0164fd-1f21-4acd-b2d1-964d6c593839";
->>>>>>> master
 const API_URL_POPULAR =
   "https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_100_POPULAR_FILMS&page=1";
 const API_URL_SEARCH =
@@ -14,15 +10,15 @@ const API_URL_SEARCH =
 const API_URL_MOVIE_DETAILS =
   "https://kinopoiskapiunofficial.tech/api/v2.2/films/";
 
-<<<<<<< HEAD
-  ///////////////////////////////////////////
-=======
-  const API_URL_AWAIT_MOVIES = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_AWAIT_FILMS&page=1';
+//const API_URL_TOP_BEST = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_250_BEST_FILMS&page=1'
 
-  const API_TOP_250 = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_250_BEST_FILMS&page=1'
+//const TOP_AWAIT_FILMS = 'https://kinopoiskapiunofficial.tech/api/v2.2/films?genres=1&order=RATING&type=FILM&ratingFrom=0&ratingTo=10&yearFrom=1000&yearTo=3000&page=1'
 
-  
->>>>>>> master
+////////////////////////////////////////////
+
+//let API_URL_USING = "";
+
+///////////////////////////////////////////
 
 function menu() {
   document
@@ -212,12 +208,11 @@ function changePage (){
       }
   }
 }
-<<<<<<< HEAD
 //////////////////////////////////////////
 
 
 
-
+//////////////////////отрисовка странцы о фильме/////////////////////////////
 async function aboutFilm(id){
   const resp = await fetch(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}`, {
     headers: {
@@ -243,16 +238,13 @@ async function aboutFilm(id){
   });
   const postersData = await posters.json();
 
-  const trailer = await fetch(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/videos`, {
-    headers: {
-      "Content-Type": "application/json",
-      "X-API-KEY": API_KEY,
-    },
-  });
-  const trailerData = await trailer.json();
-
-  console.log(trailerData)
-
+  // const trailer = await fetch(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/videos`, {
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //     "X-API-KEY": API_KEY,
+  //   },
+  // });
+  // const trailerData = await trailer.json();
 
   document.querySelector(".movies").innerHTML = ""
   document.querySelector('.main__page').innerHTML = ""
@@ -312,18 +304,21 @@ async function aboutFilm(id){
         `
 }
 
+////////////////////////выбор в меню//////////////////////////////////////
 
-=======
-
-const awesome = document.querySelector('.second');
-awesome.addEventListener('click',()=> {
-    return getMovies(API_URL_AWAIT_MOVIES);
+// function changeTop (){
+//   const mainMenu = document.querySelector('.menu__selection');
+//   mainMenu.onclick = function(event){
+//     const target = event.target
+//     if (target.tagName == 'BUTTON' && target.id == 0){
+//       API_URL_USING = API_URL_TOP_BEST
+//       getMovies(API_URL_USING)
+//     }
+//     else if((target.tagName == 'BUTTON' && target.id == 1)){
+//       API_URL_USING = TOP_AWAIT_FILMS
+//       getMovies(API_URL_USING)
+//     }
     
-})
-
-const top250 = document.querySelector('.first');
-top250.addEventListener('click',()=> {
-    return getMovies(API_TOP_250);
-    
-})
->>>>>>> master
+//   }
+// }
+// changeTop ()
