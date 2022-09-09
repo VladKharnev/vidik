@@ -29,6 +29,8 @@ body {
   font-size: 0;
   box-shadow: none;
   cursor: pointer;
+  margin-top: 20px;
+  padding-left: 20px;
 }
 
 .c-hamburger:focus {
@@ -65,7 +67,7 @@ body {
 }
 
 .c-hamburger {
-  background-color: #cb0032;
+  background-color: #041e39;
   border: none;
 }
 
@@ -441,7 +443,7 @@ footer {
 
 .poster-img {
   width: 400px;
-  height: 225px;
+  height: 240px;
   margin-right: 20px;
 }
 
